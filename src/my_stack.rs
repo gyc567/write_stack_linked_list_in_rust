@@ -42,16 +42,37 @@ public class MyStack {
 */
 ///
 
-pub struct MyStack {
-    maxSize: i32,
-    top: i32,
-    stackArray: [i32; 0],
+pub struct MyStack<T> {
+   maxSize: usize,
+   items: Vec<T>,
 }
-
-pub fn is_empty() -> bool {
-    true
-}
-
-pub fn add(a: i32, b: i32) -> i32 {
-    a + b
+impl<T> MyStack<T> {
+   pub fn with_capacity(maxSize: usize) -> MyStack<T> {
+      MyStack {
+         maxSize: maxSize,
+         items: Vec::with_capacity(maxSize),
+      }
+   }
+   pub fn capacity(&self) -> usize {
+      self.items.capacity()
+   }
+   pub fn is_empty(&mut self) -> bool {
+      self.items.is_empty()
+   }
+   pub fn pop(&mut self) -> Option<T> {
+      self.items.pop()
+   }
+   pub fn peek(&self) -> Option<&T> {
+      self.items.last()
+   }
+   pub fn size(&self) -> usize {
+      self.items.len()
+   }
+   pub fn push(&mut self, item: T) -> bool {
+      if self.items.len() == self.maxSize {
+         return false;
+      }
+      self.items.push(item);
+      return true;
+   }
 }
