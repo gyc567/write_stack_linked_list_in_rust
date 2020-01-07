@@ -11,3 +11,5 @@ criterion = "0.3"
 
 
 [dependencies]
+typed-builder = "0.4.0"
+ifmt = "0.2.0"

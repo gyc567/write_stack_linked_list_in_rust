@@ -6,7 +6,7 @@ use speculate::speculate;
 
 speculate! {
 
-    describe "test for my stack " {
+    describe "testing  my stack " {
 
         before {
         }
@@ -19,6 +19,7 @@ speculate! {
         it "test peek fn should work fine "{
         let mut stack = MyStack::<u32>::with_capacity(10);
         stack.push(1u32);
+        assert_eq!(Some(&1u32), stack.peek());
         stack.push(2u32);
         stack.push(3u32);
         assert_eq!(Some(&3u32), stack.peek());
